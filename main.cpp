@@ -19,39 +19,12 @@ void run_logic(std::vector<int> &vec) {
   }
 }
 
-void parser(std::vector<int> &vec) {
-  for(std::vector<int>::iterator it = vec.begin(); it != vec.end(); it++) {
-    if (should_erase(*it)) {
-      vec.erase(it);
-    }
-  }
-}
-
-void parser2(std::vector<int> &vec) {
-  for(std::vector<int>::iterator it = vec.rbegin(); it != vec.rend(); ++it) {
-    if (should_erase(*it)) {
-      vec.erase(it);
-    }
-  }
-}
-
-void parser3(std::vector<int> &vec) {
-  for(std::vector<int>::iterator it = vec.rbegin(); it != vec.rend(); it++) {
-    if (should_erase(*it)) {
-      vec.erase(it);
-    }
-  }
-}
-
 // Optional: a main() to illustrate usage
-int main()
+int http_serve()
 {
     std::vector<int> v{1, 2, 3, 4, 5, 6};
 
     run_logic(v);
-    parser(v);
-    parser2(v);
-    parser3(v);
 
     for (int n : v) std::cout << n << ' ';
     std::cout << '\n';
