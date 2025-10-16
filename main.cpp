@@ -7,9 +7,12 @@ bool should_erase(int value)
     return value % 2 == 0;          // erase even numbers, for example
 }
 
+////////////////////////////////////////////////////////////////////////////////
+// Loop variants with explicit iterator types
+////////////////////////////////////////////////////////////////////////////////
+
 void run_logic(std::vector<int> &vec) {
-  auto it;
-  for(it = vec.begin(); it != vec.end(); ++it) {
+  for(std::vector<int>::iterator it = vec.begin(); it != vec.end(); ++it) {
     if (should_erase(*it)) {
       vec.erase(it);
     }
@@ -17,8 +20,23 @@ void run_logic(std::vector<int> &vec) {
 }
 
 void parser(std::vector<int> &vec) {
-  auto it;
-  for(it = vec.begin(); it != vec.end(); it++) {
+  for(std::vector<int>::iterator it = vec.begin(); it != vec.end(); it++) {
+    if (should_erase(*it)) {
+      vec.erase(it);
+    }
+  }
+}
+
+void parser2(std::vector<int> &vec) {
+  for(std::vector<int>::iterator it = vec.rbegin(); it != vec.rend(); ++it) {
+    if (should_erase(*it)) {
+      vec.erase(it);
+    }
+  }
+}
+
+void parser3(std::vector<int> &vec) {
+  for(std::vector<int>::iterator it = vec.rbegin(); it != vec.rend(); it++) {
     if (should_erase(*it)) {
       vec.erase(it);
     }
@@ -32,6 +50,8 @@ int main()
 
     run_logic(v);
     parser(v);
+    parser2(v);
+    parser3(v);
 
     for (int n : v) std::cout << n << ' ';
     std::cout << '\n';
